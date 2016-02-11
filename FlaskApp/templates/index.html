@@ -2,8 +2,8 @@
 <html lang="en">
 	<head>
 		<title>Realtime Stock chart</title>
-		<link href="../static/css/bootstrap.min.css" rel="stylesheet">
-		<link href="../static/css/style.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.min.css') }}"> 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}"> 
 	</head>
 	<body>
 		<div class="container">
@@ -17,20 +17,22 @@
         		</nav>
         		
         		<h3 class="text-muted">Stock Prediction</h3>
-      		</div>
+      </div>
+
 			<div class="jumbotron">
   				<p>This project aims to predict stock using data collected from Twitter and Facebook. The prediction and real time value are shown as below.</p>
 			</div>
+
 			<ul class="nav nav-tabs">
     			<li class="active"><a data-toggle="tab" href="#stock1">Google</a></li>
     			<li><a data-toggle="tab" href="#stock2">Facebook</a></li>
     			<li><a data-toggle="tab" href="#stock3">Amazon</a></li>
-  			</ul>
+  		</ul>
 
-  			<div class="tab-content">
+  		<div class="tab-content">
     			<div id="stock1" class="tab-pane fade in active">
       				<div class="chart" id="container"></div>
-      			</div>
+      		</div>
     			<div id="stock2" class="tab-pane fade">
       				<div class="chart"></div>
     			</div>
@@ -38,7 +40,7 @@
       				<div class="chart"></div>
     			</div>
     		
-  			</div>
+  		</div>
 			
 			<footer class="footer">
         		<p>&copy; 2016 tinyjumbo</p>
@@ -52,3 +54,11 @@
 	</body>
 	
 </html>
+
+
+
+
+
+
+
+

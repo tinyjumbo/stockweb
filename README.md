@@ -1,5 +1,31 @@
 # stockweb
 
-First version stock web
+Description
+-----------
 
-all most nothing on it!
+Build stock web predict stock based on tweets
+
+
+
+Resource
+--------
+1.__[Flask ORG]__ http://flask.pocoo.org/
+
+2.__[Twitter API]__ https://dev.twitter.com/streaming/overview
+
+Code style
+---------------------
+
+Clean code.
+
+Language & Framework
+--------------------
++ Front-end: JavaScript
++ Back-end: Python
++ Database: MongoDB
++ Framework: Flask
+
+Owner
+-----
+
+@team: 小飞象 Jumbo 

@@ -81,8 +81,12 @@ body {
     border-bottom: 0;
   }
 }
+.container{
+	width:85%;
+	min-width: 310px;
+}
 
-
-#chart{
+.chart{
 	height:400px;
+	margin-bottom: 10px;
 }

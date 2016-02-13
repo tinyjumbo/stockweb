@@ -7,7 +7,7 @@ $(document).ready(function () {
      * Create the chart when all data is loaded
      * @returns {undefined}
      */
-    // inpit names
+    // input names
     function createChart() {
 
         $('#container').highcharts('StockChart', {
@@ -46,7 +46,7 @@ $(document).ready(function () {
 
     $.each(names, function (i, name) {
 
-        $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=' + name.toLowerCase() + '-c.json&callback=?',    function (data) {
+        $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=' + name.toLowerCase() + '-c.json&callback=?', function (data) {
 
             seriesOptions[i] = {
                 name: name,
@@ -56,7 +56,6 @@ $(document).ready(function () {
             // As we're loading the data asynchronously, we don't know what order it will arrive. So
             // we keep a counter and create the chart when all the data is loaded.
             seriesCounter += 1;
-
             if (seriesCounter === names.length) {
                 createChart();
             }

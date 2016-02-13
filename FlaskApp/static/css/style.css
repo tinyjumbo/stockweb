@@ -12,6 +12,7 @@ body {
 .header,
 .marketing,
 .footer {
+  text-align: center;
   padding-right: 15px;
   padding-left: 15px;
 }
@@ -81,7 +82,7 @@ body {
     border-bottom: 0;
   }
 }
-.container{
+.container {
 	width:85%;
 	min-width: 310px;
 }

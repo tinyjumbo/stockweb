@@ -1,4 +1,4 @@
-$(function () {
+$(document).ready(function () {
     var seriesOptions = [],
         seriesCounter = 0,
         names = ['MSFT', 'AAPL', 'GOOG'];
@@ -7,6 +7,7 @@ $(function () {
      * Create the chart when all data is loaded
      * @returns {undefined}
      */
+    // inpit names
     function createChart() {
 
         $('#container').highcharts('StockChart', {

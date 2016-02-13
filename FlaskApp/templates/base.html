@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!-- Some stuff here which should be included in all templates for example js or css -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.min.css') }}"> 
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}"> 
+        {% block extra_css %}
+            <!-- to included app-template dependent css -->
+        {% endblock extra_css %}
+
+        {% block extra_js %}
+            <!-- to included app-template dependent js -->
+        {% endblock extra_js %}
+
+        {% block extra_head %}
+            <!-- for anything else inside head -->
+        {% endblock extra_head %}
+
+    </head>
+    <body>
+        {% block menu %}
+            <!-- Default menu here -->
+            {% block extra_menu %}
+                <!-- extend menu based on template -->
+            {% endblock extra_menu %}
+        {% endblock menu %}
+
+        {% block content %}
+        {% endblock content %}
+
+        {% include "footer.html" %}
+        <!-- if you want to have manual js scripts at bottom -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://code.highcharts.com/stock/highstock.js"></script>
+        <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+        {% block bottom_js %}
+        {% endblock bottom_js %}
+    </body>
+</html>

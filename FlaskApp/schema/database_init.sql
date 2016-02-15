@@ -1,3 +1,8 @@
+-- Login psql terminal --
+$su postgres
+$psql
+
+
 -- Create Super User --
 BEGIN transaction;
 CREATE USER postgres WITH SUPERUSER LOGIN;

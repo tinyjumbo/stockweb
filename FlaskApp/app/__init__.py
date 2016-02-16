@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask
 app = Flask(__name__)
 from app import views
 # all init should goes here file settings db settings

@@ -17,7 +17,8 @@ Json object example:
 }
 '''
 
-
+# These belongs to models. you should create a seperate folder for models.
+# schema folder is just for any .sql file
 class Tweets_sche():
 
     def __init__(self, creation_time, text, hashtages):

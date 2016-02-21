@@ -2,7 +2,9 @@
 from app import app
 #server mode
 #from FlaskApp.app import app
-
+# dude these schema things should not be in the view.. this basically means
+# everytime when you refresh the page you have to reconnect the server??
+# I believe this should be in init file and the you shoudl find a way to maintain through model.
 from flask import render_template, redirect, url_for, request
 from app.schema.tweets import Tweets_sche
 import pymongo

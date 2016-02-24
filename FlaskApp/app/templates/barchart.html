@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block extra_head %}
+<title>Realtime Stock chart</title>
+{% endblock extra_head %}
+{% block menu %}
+<div class="container">
+    <div class="header clearfix">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation"><a href="#">About</a></li>
+                <li role="presentation"><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">Stock Prediction</h3>
+    </div>
+</div>
+{% endblock menu %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <p>This project aims to predict stock using data collected from Twitter and Facebook. The prediction and real time value are shown as below.</p>
+    </div>
+    <div class="panel">
+
+        <div class="chart" id="container"></div>
+    </div>
+    <table id="datatable" >
+        <thead>
+        <tr>
+            <th></th>
+            <th>Amazon</th>
+            <th>Facebook</th>
+            <th>Google</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <th>2016-2-19</th>
+            {% for item in info %}
+            <td>{{ item }}</td>
+            {% endfor %}
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
+
+{% block bottom_js %}
+<script src="../static/js/script_barchart.js" ></script>
+{% endblock bottom_js %}

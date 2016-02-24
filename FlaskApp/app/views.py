@@ -11,9 +11,25 @@ from app.schema.tweets import Tweets_sche
 import pymongo
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure
-# this file should works as part of controllers for routes
-# if we have more actions later we can have a folder for controllers later but now lets keep it here.
-# all routes should go here
+import logging
+from logging import Formatter, FileHandler
+
+#Setup the logger
+LOGGER = logging.getLogger('streamer_logger')
+file_handler = FileHandler('streamer.log')
+handler = logging.StreamHandler()
+file_handler.setFormatter(Formatter(
+        '%(thread)d %(asctime)s %(levelname)s: %(message)s '
+        '[in %(pathname)s:%(lineno)d]'
+))
+handler.setFormatter(Formatter(
+        '%(thread)d %(asctime)s %(levelname)s: %(message)s '
+        '[in %(pathname)s:%(lineno)d]'
+))
+LOGGER.addHandler(file_handler)
+LOGGER.addHandler(handler)
+LOGGER.setLevel(logging.DEBUG)
+
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -31,6 +47,7 @@ def bar():
         client = MongoClient(MONGO_HOST, MONGO_PORT)
         db = client.testdb
         tweet_collection = db.mycollection
+        LOGGER.info('connecting to DB...')
         print "Successfully connect to DB ---"
 
     except ConnectionFailure:
@@ -54,6 +71,7 @@ def bar():
     print db_read
     print db_read_num
     print "succeed to read"
+    LOGGER.info('Reading data from db...')
     for i in db_read:
         count_set.append(i["count"])
     '''

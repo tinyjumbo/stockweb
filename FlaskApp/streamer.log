@@ -1,0 +1,2 @@
+139891422091072 2016-02-24 00:22:25,865 INFO: connecting to DB... [in /home/iris/new_repo/stockweb/FlaskApp/app/views.py:50]
+139891422091072 2016-02-24 00:22:25,894 INFO: Reading data from db... [in /home/iris/new_repo/stockweb/FlaskApp/app/views.py:74]

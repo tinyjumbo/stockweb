@@ -18,7 +18,7 @@ from pymongo.errors import ConnectionFailure
 
 #----DB SETTINGS BEGIN---------------------------------------------
 
-MONGO_HOST = 'localhost'
+MONGO_HOST = '162.243.122.37'
 MONGO_PORT = 27017
 
 #Try to connect to MongoDB

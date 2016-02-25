@@ -39,14 +39,14 @@ def index():
 def bar():
     #----DB INIT BEGIN---------------------------------------------
 
-    MONGO_HOST = 'localhost'
+    MONGO_HOST = '162.243.122.37'
     MONGO_PORT = 27017
 
     #Try to connect to MongoDB
     try:
         client = MongoClient(MONGO_HOST, MONGO_PORT)
-        db = client.testdb
-        tweet_collection = db.mycollection
+        db = client.tinyjumbo
+        tweet_collection = db.tcount
         LOGGER.info('connecting to DB...')
         print "Successfully connect to DB ---"
 
@@ -63,10 +63,10 @@ def bar():
     count_set = []
     print "create an empty set"
     now = datetime.now()
-    three_day_ago = now.today() - timedelta(days=3)
-    four_day_ago = now.today() - timedelta(days=4)
-    db_read = tweet_collection.find({'date': {'$gte': four_day_ago, '$lt': three_day_ago}}).sort([("company",pymongo.ASCENDING)])
-    db_read_num = tweet_collection.find({'date': {'$gte': four_day_ago, '$lt': three_day_ago}}).count()
+    start = datetime(2016, 2, 18, 20, 01, 01)
+    end = datetime(2016, 2, 19,20 , 01, 04)
+    db_read = tweet_collection.find({'date': {'$gte': start, '$lt': end}}).sort([("company",pymongo.ASCENDING)])
+    db_read_num = tweet_collection.find({'date': {'$gte': start, '$lt': end}}).count()
     #db_read = tweet_collection.find_one()
     print db_read
     print db_read_num

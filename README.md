@@ -2,7 +2,6 @@
 
 Description
 -----------
-
 Build stock web predict stock based on tweets  
 
 Webpage: www.zachqiu.com

@@ -13,6 +13,8 @@ from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure
 import logging
 from logging import Formatter, FileHandler
+from DBdriver import DBdriver
+
 
 #Setup the logger
 LOGGER = logging.getLogger('streamer_logger')
@@ -30,6 +32,9 @@ LOGGER.addHandler(file_handler)
 LOGGER.addHandler(handler)
 LOGGER.setLevel(logging.DEBUG)
 
+
+
+
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -37,50 +42,10 @@ def index():
 
 @app.route("/barchart")
 def bar():
-    #----DB INIT BEGIN---------------------------------------------
-
-    MONGO_HOST = '162.243.122.37'
-    MONGO_PORT = 27017
-
-    #Try to connect to MongoDB
-    try:
-        client = MongoClient(MONGO_HOST, MONGO_PORT)
-        db = client.tinyjumbo
-        tweet_collection = db.tcount
-        LOGGER.info('connecting to DB...')
-        print "Successfully connect to DB ---"
-
-    except ConnectionFailure:
-        LOGGER.error('Could not connect to MongoDB, aborting Flask app...')
-        sys.exit(-1)
-	#----DB INIT END---------------------------------------------
-
-
-    #read from DB and store it
-    print "start to get collections"
-    data_set = []
-    date_set = []
-    count_set = []
-    print "create an empty set"
-    now = datetime.now()
-    start = datetime(2016, 2, 18, 20, 01, 01)
-    end = datetime(2016, 2, 19,20 , 01, 04)
-    db_read = tweet_collection.find({'date': {'$gte': start, '$lt': end}}).sort([("company",pymongo.ASCENDING)])
-    db_read_num = tweet_collection.find({'date': {'$gte': start, '$lt': end}}).count()
-    #db_read = tweet_collection.find_one()
-    print db_read
-    print db_read_num
-    print "succeed to read"
+    db=DBdriver()
+    barchar_data=db.read_barchar()
     LOGGER.info('Reading data from db...')
-    for i in db_read:
-        count_set.append(i["count"])
-    '''
-    for data in db_read:
-        print "start to reformat data"
-        d = Tweets_counter(data["company"],data["count"],data["date"])
-        data_set.append(d)
-    '''
-    return render_template('barchart.html',info=count_set)
+    return render_template('barchart.html',info=barchar_data)
 
 
 

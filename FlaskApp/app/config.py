@@ -1,4 +1,4 @@
-# all config goes here
+# all DBconfig goes here
 
 
 

@@ -13,23 +13,3 @@ from pymongo.errors import ConnectionFailure
 
 
 # all init should goes here file settings db settings
-
-
-
-#----DB SETTINGS BEGIN---------------------------------------------
-
-MONGO_HOST = '162.243.122.37'
-MONGO_PORT = 27017
-
-#Try to connect to MongoDB
-try:
-	client = MongoClient(MONGO_HOST, MONGO_PORT)
-	db = client.tinyjumbo
-	tweet_collection = db.google
-	print "Sucees connect to DB"
-	#print tweet_collection.find_one()
-
-except ConnectionFailure:
-	LOGGER.error('Could not connect to MongoDB, aborting Flask app...')
-	sys.exit(-1)
-#----DB SETTINGS END---------------------------------------------

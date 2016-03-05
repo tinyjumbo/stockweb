@@ -7,7 +7,6 @@ from app import app
 # I believe this should be in init file and the you shoudl find a way to maintain through model.
 from datetime import datetime, timedelta
 from flask import render_template, redirect, url_for, request
-from app.schema.tweets import Tweets_sche
 import pymongo
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure

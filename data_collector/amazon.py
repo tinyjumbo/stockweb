@@ -11,18 +11,9 @@ mongoexport --host localhost --db tinyjumbo --collection google --out tweets.jso
 
 mongoexport --host  162.243.122.37 --db tinyjumbo --collection google --out tweets.json
 
-
-
-
-
 mongoimport --host localhost --db tinyjumbo --collection google --file tweets.json
 mongoimport --host localhost --db tinyjumbo --collection tcount --file tcount.json
-
-
 '''
-
-
-
 
 from tweepy import Stream
 from tweepy import OAuthHandler
@@ -33,94 +24,56 @@ import time
 import json
 import datetime
 import unicodedata
+from twitter_oauth import CUSTOMER_KEY, CUSTOMER_SECRET, ACCESS_TOKEN, ACCESS_SECRET
 
 
-
-#mongoDB setting
+# mongoDB setting
 client = MongoClient()
 client = MongoClient('mongodb://localhost:27017/')
-db=client.tinyjumbo
+db = client.tinyjumbo
 
-
-
-#consumer key, consumer secret, access token, access secret.
-ckey="p3nROxZYmF9aOWvJYkdAMtd96"
-csecret="kqePWTGGF2q6O2ITLbAfY5PILUUUJ20oVkquADZORt4oY2wnTp"
-atoken="2300498179-IWCFs7kAIbbrH6gS2Yffwg4Sy1Y3ajEwSwNMBYB"
-asecret="NWyDoIYqe4UaJbATPHhp7kkoiK2YHjOtshZEzTcaPrzDP"
-
-
-
-#init starttime
+# init starttime
 global starttime
 global tweetscount
 starttime = time.time()
 tweetscount = 0
 
 
+# listen to twitter Stream API and store tweets with key word Google in to MongoDB.
+class MyStreamListener(StreamListener):
+    def on_data(self, data):
+        # set global variable
+        global starttime
+        global tweetscount
+        tweetscount += 1
 
+        # if program running over 1m then exit
+        endtime = time.time()
+        print "endtime: ", endtime, "starttime: ", starttime
+        print 'elapsed time: ', str(datetime.timedelta(seconds=(endtime-starttime)))
+        # print (endtime-starttime)
+        if (endtime - starttime) > 30.0:
+            record = str(datetime.datetime.now())
+            record = record + " " + str(tweetscount) + " amazon\n"
+            with open('/Users/jingli430/PycharmProjects/stockweb/data_collector/logfile', 'a') as f:
+                f.write(record)
 
+            exit()
 
+        # reading tweets from API and save to MongoDB
+        newdata = json.loads(data)
+        text = unicodedata.normalize('NFKD', newdata["text"]).encode('ascii', 'ignore')
+        simple = {"time": str(datetime.datetime.now()), "text": text, "hashtages": newdata['entities']['hashtags']}
+        result = db.amazon.insert_one(simple)
+        # print result.inserted_id
 
+        return True
 
-#listen to twitter Stream API and store tweets with key word Google in to MongoDB.
-class listener(StreamListener):
-	
+    def on_error(self, status):
+        print status
 
-	def on_data(self, data):
+auth = OAuthHandler(CUSTOMER_KEY, CUSTOMER_SECRET)
+auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
 
-		#set global variable
-		global starttime
-		global tweetscount
-		tweetscount+=1
-
-		#if program running over 1m then exit
-		endtime=time.time()
-		#print (endtime-starttime)
-		if (endtime - starttime)> 30.0:
-			record=str(datetime.datetime.now())
-			record= record + " " +str(tweetscount) +" amazon\n"
-			with open('/root/data_collector/logfile','a') as f:
-				f.write(record)
-
-			exit()
-
-
-		#reading tweets from API and save to MongoDB
-		newdata = json.loads(data)
-		text=unicodedata.normalize('NFKD', newdata["text"]).encode('ascii','ignore')
-		simple={"time":str(datetime.datetime.now()),"text":text,"hashtages":newdata['entities']['hashtags']}
-		result = db.amazon.insert_one(simple)
-		#print result.inserted_id
-	
-
-
-		return True
-
-		
-
-
-	def on_error(self,status):
-
-		print status
-
-
-
-auth = OAuthHandler(ckey,csecret)
-auth.set_access_token(atoken,asecret)
-
-twitterStream = Stream(auth,listener())
-twitterStream.filter(track=["Amazon","amazon"])
-
-
-
-
-
-
-
-
-
-
-
-
-
+twitterStream = Stream(auth, MyStreamListener())
+twitterStream.filter(track=["tesla", "Tesla"])

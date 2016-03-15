@@ -5,8 +5,14 @@
         <!-- Some stuff here which should be included in all templates for example js or css -->
         {% block extra_css %}
             <!-- to included app-template dependent css -->
+		<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 	    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.min.css') }}"> 
-            <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}"> 
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/sol.css') }}">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		
+
+
         {% endblock extra_css %}
 
         {% block extra_js %}
@@ -32,9 +38,11 @@
         <!-- if you want to have manual js scripts at bottom -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
         <script src="https://code.highcharts.com/stock/highstock.js"></script>
         <script src="https://code.highcharts.com/modules/data.js"></script>
         <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         {% block bottom_js %}
 
         {% endblock bottom_js %}

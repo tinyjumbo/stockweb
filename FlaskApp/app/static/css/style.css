@@ -83,11 +83,94 @@ body {
   }
 }
 .container {
-	width:85%;
+	width:90%;
 	min-width: 310px;
 }
-
+.jumbotron {
+    width:100%;
+    margin-left:auto;
+}
 .chart{
 	height:400px;
 	margin-bottom: 10px;
+}
+
+.tabs {
+    margin-top:20px;
+    position: relative;
+    background: #fff;
+    width: 100%;
+}
+
+.tabs nav {
+	margin-top:80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    background: #C9C9C9;
+    color: #dcdcdc;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
+    width: 60px;
+    float:left;
+}
+
+.tabs nav a {
+    padding: 10px 0px;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;	
+}
+
+.tabs nav a:hover,
+.tabs nav a.selected {
+    background: #dcdcdc;
+    color: #C9C9C9;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+.tabs .content {
+    padding: 20px 0px;
+    top: 0px;
+    left: 60px;
+    color: #000;
+    width: 90%;
+    height:auto;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.1s linear 0s;
+}
+.tabs .content p { padding-bottom: 2px; }
+
+.tabs .content p:last-of-type { padding-bottom: 0px; }
+.main-panel{
+    width:100%;
+    min-height:400px;
+}
+#filter, #date-picker{
+    width:60%;
+    margin-bottom:20px;
+    margin-left:10%;
+
+}
+.tweet-card{
+	width:70%;
+	margin-left:12%;
+	margin-top: 30px;
+	display:none;
+}
+.icon-text{
+	background-position: left center;	
+	background-repeat: no-repeat;
+	padding-left: 20px; /* Or size of icon + spacing */
+}
+#retweet{
+	background-image: url(../image/retweet.png);
+	background-size: 20px 20px;
+}
+#like{
+	background-image: url(../image/heart-64.png);
+	background-size: 15px 15px;
+}
+.bottom-line{
+	display:inline-block;
+	margin-bottom:10px;
 }

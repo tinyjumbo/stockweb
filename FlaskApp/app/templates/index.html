@@ -3,18 +3,19 @@
     <title>Realtime Stock chart</title>
 {% endblock extra_head %}
 {% block menu %}
-    <div class="container">
-        <div class="header clearfix">
-            <nav>
-                <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active"><a href="#">Home</a></li>
-                    <li role="presentation"><a href="#">About</a></li>
-                    <li role="presentation"><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-            <h3 class="text-muted">Stock Prediction</h3>
-        <div>
+<div class="container">
+    <div class="header clearfix">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation"><a href="#">About</a></li>
+                <li role="presentation"><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">Stock Web</h3>
     </div>
+</div>
+
 {% endblock menu %}
 
 {% block content %}
@@ -22,26 +23,112 @@
         <div class="jumbotron">
             <p>This project aims to predict stock using data collected from Twitter and Facebook. The prediction and real time value are shown as below.</p>
         </div>
-        <div>
-            <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#stock1">Google</a></li>
-                <li><a data-toggle="tab" href="#stock2">Facebook</a></li>
-                <li><a data-toggle="tab" href="#stock3">Amazon</a></li>
-            </ul>
-        <div>
-        <div class="tab-content">
-            <div id="stock1" class="tab-pane fade in active">
-            <div class="chart" id="container"></div>
+
+
+        <div class="main-panel">
+
+            <div id="filter" >
+                <select id="company-select" name="character" multiple="multiple" >
+                    <option value="Google">Google</option>
+                    <option value="Amazon">Amazon</option>
+                    <option value="Facebook">Facebook</option>
+                </select>
+            </div>
+            <div id="date-picker">
+                <label for="from">From</label>
+                <input type="text" id="from" name="from">
+                <label for="to">to</label>
+                <input type="text" id="to" name="to">
+            </div>
+            <div class="tabs">
+                <nav>
+                    <a href="#container"><image src="../static/image/chart-128.png" style="width:60px;height:40px;"/></a>
+                    <a href="#container2"><image src="../static/image/bar_chart-128.png" style="width:60px;max-height:40px;"/></a>
+                    <a href="#container3"><image src="../static/image/Twitter_logo_blue.png" style="width:50px;max-height:40px;"/></a>
+                </nav>
+                <div class="chart content" id="container0">
+                    
+                </div>
+                <div class="chart content" id="container1">
+                    
+                </div>
+                <div class="chart content" id="container2">
+                    <div class="w3-card-4 tweet-card"> 
+						<header class="w3-container">
+  							<h3>UserScreenName</h3>
+						</header>
+						<div class="w3-container">
+  							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<p>1:26 PM - 30 April 2015</p>
+							<div class="bottom-line">
+								<span id="retweet" class="icon-text">445</span>
+								<span id="like" class="icon-text">673</span>
+							</div>							
+						</div>
+					</div>
+					<div class="w3-card-4 tweet-card"> 
+						<header class="w3-container">
+  							<h3>Jelly-Yu</h3>
+						</header>
+						<div class="w3-container">
+  							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<p>1:26 PM - 30 April 2015</p>
+							<div class="bottom-line">
+								<span id="retweet" class="icon-text">123</span>
+								<span id="like" class="icon-text">223</span>
+							</div> 							
+						</div>
+					</div>
+					<div class="w3-center">
+  							<div class="w3-section">
+    							<button class="w3-btn" onclick="plusDivs(-1)">❮ Prev</button>
+    							<button class="w3-btn" onclick="plusDivs(1)">Next ❯</button>
+  							</div>
+					</div>
+                </div>
+            </div>
+<table id="datatable" style="display:none;">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Jane</th>
+            <th>John</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Apples</th>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <th>Pears</th>
+            <td>2</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <th>Plums</th>
+            <td>5</td>
+            <td>11</td>
+        </tr>
+        <tr>
+            <th>Bananas</th>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <th>Oranges</th>
+            <td>2</td>
+            <td>4</td>
+        </tr>
+    </tbody>
+</table>
         </div>
-        <div id="stock2" class="tab-pane fade">
-            <div class="chart" id="container_1"></div>
-        </div>
-        <div id="stock3" class="tab-pane fade">
-            <div class="chart"></div>
-        </div>
+
     </div>
 {% endblock content %}
 
 {% block bottom_js %}
+    <script src="../static/js/sol.js"></script>
     <script src="../static/js/script.js" ></script>
 {% endblock bottom_js %}

@@ -38,9 +38,10 @@
         <tbody>
 
         <tr>
-            <th>2016-2-19</th>
-            {% for item in info %}
-            <td>{{ item }}</td>
+			{% for k, v in info.iteritems %}
+            <th>{{ k }}</th>
+            {% for j in v %}
+            <td>{{ j }}</td>
             {% endfor %}
         </tr>
 

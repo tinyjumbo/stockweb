@@ -91,36 +91,21 @@
     <thead>
         <tr>
             <th></th>
-            <th>Jane</th>
-            <th>John</th>
+            <th>Amazon</th>
+            <th>Facebook</th>
+            <th>Google</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <th>Apples</th>
-            <td>3</td>
-            <td>4</td>
+			{% for k, v in info.items %}
+            <th>{{ k }}</th>
+            {% for j in v %}
+            <td>{{ j }}</td>
+            {% endfor %}
+			{% endfor %}
         </tr>
-        <tr>
-            <th>Pears</th>
-            <td>2</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <th>Plums</th>
-            <td>5</td>
-            <td>11</td>
-        </tr>
-        <tr>
-            <th>Bananas</th>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <th>Oranges</th>
-            <td>2</td>
-            <td>4</td>
-        </tr>
+
     </tbody>
 </table>
         </div>

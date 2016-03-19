@@ -36,7 +36,10 @@ LOGGER.setLevel(logging.DEBUG)
 
 @app.route("/")
 def index():
-    return render_template('index.html')
+    db=DBdriver()
+    barchar_data=db.read_barchar()
+    print barchar_data
+    return render_template('index.html',info=barchar_data)
 
 
 @app.route("/barchart")

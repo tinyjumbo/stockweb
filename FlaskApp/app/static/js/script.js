@@ -68,14 +68,14 @@ function line_chart(){
                 },
 
                 title : {
-                    text : 'AAPL Stock Price'
+                    text : 'Score predicted'
                 },
 
                 series : [{
                     name : 'AAPL',
                     data : data,
                     tooltip: {
-                        valueDecimals: 2
+                        valueDecimals: 5
                     }
                 }]
             });

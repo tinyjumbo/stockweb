@@ -11,6 +11,10 @@ function bar_chart(){
         title: {
             text: 'Tweets count'
         },
+		xAxis: {       
+    		ordinal: false,
+			type: 'datetime'
+		},
         yAxis: {
             allowDecimals: false,
             title: {
@@ -20,7 +24,7 @@ function bar_chart(){
         tooltip: {
             formatter: function () {
                 return '<b>' + this.series.name + '</b><br/>' +
-                    this.point.y + ' ' + this.point.name.toLowerCase();
+                    this.point.y;
             }
         }
     });
@@ -49,42 +53,38 @@ function showDivs(n) {
   }
   x[slideIndex-1].style.display = "block";  
 }
-function line_chart(){
-	$.ajax({
-        url: "https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?",
-        dataType: 'json',
-        error: function(xhr, textStatus, errorThrown){
-            console.log("sth bad happened");
-
+function line_chart(company){
+	$('#container0').highcharts({
+        data: {
+            table: company+'-table'
         },
-        success: function(data){
-            console.log(data);
-            console.log("I want to die");
-            $('#container0').highcharts('StockChart', {
-
-
-                rangeSelector : {
-                    selected : 1
-                },
-
-                title : {
-                    text : 'Score predicted'
-                },
-
-                series : [{
-                    name : 'AAPL',
-                    data : data,
-                    tooltip: {
-                        valueDecimals: 5
-                    }
-                }]
-            });
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'Scores calculated'
+        },
+		xAxis: {       
+    		ordinal: false,
+			type: 'datetime'
+		},
+        yAxis: {
+            allowDecimals: false,
+            title: {
+                text: 'Units'
+            }
+        },
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.name + '</b><br/>' +
+                    this.point.y;
+            }
         }
     });
 }
 // main function to call charts
 $(document).ready(function () {
-	line_chart();
+	line_chart('google');
 	bar_chart();
     
     showDivs(slideIndex);
@@ -95,6 +95,13 @@ $(document).ready(function () {
     show_content(0);
 
     $('#company-select').searchableOptionList({
+		events: {            
+            onChange: function(sol,changedElements) {
+				var company = sol.getSelection()[0].value;
+				line_chart(company);
+				
+            }
+		},
         maxHeight: '100px'
     });
 
@@ -116,6 +123,12 @@ $(document).ready(function () {
     });
 });
 function show_content(index) {
+    if(index === 0){
+		$("#filter").show();
+    }
+	else{
+		$("#filter").hide();
+	}
     // Make the content visible
     $(".tabs .content").hide();
     $("#container"+index).show();

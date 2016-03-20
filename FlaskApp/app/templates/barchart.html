@@ -36,14 +36,14 @@
         </tr>
         </thead>
         <tbody>
-
-        <tr>
-			{% for k, v in info.iteritems %}
+        {% for k, v in info.items %}
+        <tr>			
             <th>{{ k }}</th>
             {% for j in v %}
             <td>{{ j }}</td>
-            {% endfor %}
+            {% endfor %}			
         </tr>
+        {% endfor %}
 
         </tbody>
     </table>

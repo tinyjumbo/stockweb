@@ -28,13 +28,13 @@
         <div class="main-panel">
 
             <div id="filter" >
-                <select id="company-select" name="character" multiple="multiple" >
-                    <option value="Google">Google</option>
-                    <option value="Amazon">Amazon</option>
-                    <option value="Facebook">Facebook</option>
+                <select id="company-select" name="character">
+                    <option value="google">Google</option>
+                    <option value="amazon">Amazon</option>
+                    <option value="facebook">Facebook</option>
                 </select>
             </div>
-            <div id="date-picker">
+            <div id="date-picker" style="display:none;">
                 <label for="from">From</label>
                 <input type="text" id="from" name="from">
                 <label for="to">to</label>
@@ -42,9 +42,9 @@
             </div>
             <div class="tabs">
                 <nav>
-                    <a href="#container"><image src="../static/image/chart-128.png" style="width:60px;height:40px;"/></a>
-                    <a href="#container2"><image src="../static/image/bar_chart-128.png" style="width:60px;max-height:40px;"/></a>
-                    <a href="#container3"><image src="../static/image/Twitter_logo_blue.png" style="width:50px;max-height:40px;"/></a>
+                    <a href="#container0"><image src="../static/image/chart-128.png" style="width:60px;height:40px;"/></a>
+                    <a href="#container1"><image src="../static/image/bar_chart-128.png" style="width:60px;max-height:40px;"/></a>
+                    <a href="#container2"><image src="../static/image/Twitter_logo_blue.png" style="width:50px;max-height:40px;"/></a>
                 </nav>
                 <div class="chart content" id="container0">
                     
@@ -55,6 +55,7 @@
                 <div class="chart content" id="container2">
                     <div class="w3-card-4 tweet-card"> 
 						<header class="w3-container">
+							<img src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-circle-128.png" style="margin:15px;float:left;width:40px;max-height:40px;"/>
   							<h3>UserScreenName</h3>
 						</header>
 						<div class="w3-container">
@@ -68,7 +69,8 @@
 					</div>
 					<div class="w3-card-4 tweet-card"> 
 						<header class="w3-container">
-  							<h3>Jelly-Yu</h3>
+							<img src="https://cdn1.iconfinder.com/data/icons/mix-color-4/502/Untitled-1-512.png" style="margin:15px;float:left;width:40px;max-height:40px;"/>
+  							<h3>Jelly</h3>
 						</header>
 						<div class="w3-container">
   							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -96,16 +98,70 @@
             <th>Google</th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-			{% for k, v in info.items %}
-            <th>{{ k }}</th>
-            {% for j in v %}
-            <td>{{ j }}</td>
-            {% endfor %}
-			{% endfor %}
+    <tbody>	
+       {% for key, value in info.iteritems() %}
+        <tr>			
+            <th>{{ key }}</th> 
+			{% for item in info[key] %}           
+            <td>{{ item }}</td>	
+			{% endfor %}	
         </tr>
-
+        {% endfor %}
+    </tbody>
+</table>
+<div id="dynamic-table"></div>
+<table id="google-table" style="display:none;">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Google</th>
+        </tr>
+    </thead>
+    <tbody>	
+       {% for key, value in line.iteritems() %}
+        <tr>			
+            <th>{{ key }}</th> 
+			{% for item in line[key] %}           
+            <td>{{ item }}</td>	
+			{% endfor %}	
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<table id="amazon-table" style="display:none;">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Amazon</th>
+        </tr>
+    </thead>
+    <tbody>	
+       {% for key, value in line2.iteritems() %}
+        <tr>			
+            <th>{{ key }}</th> 
+			{% for item in line2[key] %}           
+            <td>{{ item }}</td>	
+			{% endfor %}	
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<table id="facebook-table" style="display:none;">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Facebook</th>
+        </tr>
+    </thead>
+    <tbody>	
+       {% for key, value in line3.iteritems() %}
+        <tr>			
+            <th>{{ key }}</th> 
+			{% for item in line3[key] %}           
+            <td>{{ item }}</td>	
+			{% endfor %}	
+        </tr>
+        {% endfor %}
     </tbody>
 </table>
         </div>

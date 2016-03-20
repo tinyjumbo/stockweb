@@ -103,11 +103,11 @@ body {
 }
 
 .tabs nav {
-	margin-top:80px;
+    margin-top:80px;
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    background: #C9C9C9;
+    background: #919090;
     color: #dcdcdc;
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
     width: 60px;
@@ -124,7 +124,7 @@ body {
 .tabs nav a:hover,
 .tabs nav a.selected {
     background: #dcdcdc;
-    color: #C9C9C9;
+    color: #919090;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 .tabs .content {

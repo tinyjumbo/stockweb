@@ -6,6 +6,7 @@ from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure
 import config
 from app.models.tcount import tcount
+import collections
 
 
 # chart reader
@@ -24,7 +25,7 @@ class DBdriver():
                 print "key exists"
             else:
                 scores[key].append(d["score"])
-        return scores
+        return collections.OrderedDict(sorted(scores.items()))
         
     def read_barchar(self):
         # future will not be hardcode time
@@ -56,4 +57,5 @@ class DBdriver():
         # db_read = tweet_collection.find_one()
         print "succeed to read"
         # s = sorted(count_set.items(), key=lambda x: datetime.datetime.strptime(x, '%Y/%m/%d'))
-        return count_set
+        #return count_set
+        return collections.OrderedDict(sorted(count_set.items()))

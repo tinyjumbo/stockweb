@@ -8,13 +8,81 @@
         <nav>
             <ul class="nav nav-pills pull-right">
                 <li role="presentation" class="active"><a href="#">Home</a></li>
-                <li role="presentation"><a href="#">About</a></li>
-                <li role="presentation"><a href="#">Contact</a></li>
+                <li role="presentation"><a href="#" data-toggle="modal" data-target="#about_modal">About</a></li>
             </ul>
         </nav>
         <h3 class="text-muted">Stock Web</h3>
     </div>
+<div class="modal fade" id="about_modal" role="dialog">
+    <div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3>Team:tinyjumbo</h3>
+			</div>
+			<div class="modal-body">
+				<table class="table table-striped" id="tblGrid">
+            		<thead id="tblHead">
+              			<tr>
+							<th></th>
+                			<th>Name</th>
+                			<th>Education</th>
+                			<th>Role</th>
+							<th>Follow us</th>
+              			</tr>
+            		</thead>
+            	<tbody>
+              		<tr>
+						<td><img src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-circle-128.png" style="margin:15px;float:left;width:40px;max-height:40px;"/></td>
+						<td style="vertical-align:middle">Zach Qiu</td>
+                		<td style="vertical-align:middle">Tufts University</td>
+                		<td style="vertical-align:middle">Team leader & Back-end</td>
+						<td>	
+							<div class="footer-social-icons">
+								<ul class="social-icons">
+									<li><a href="" class="social-icon"> <i class="fa fa-linkedin"></i></a></li>
+									<li><a href="" class="social-icon"> <i class="fa fa-github"></i></a></li>
+								</ul>
+							</div>
+						</td>
+              		</tr>
+              		<tr>
+						<td><img src="https://cdn1.iconfinder.com/data/icons/mix-color-4/502/Untitled-1-512.png" style="margin:15px;float:left;width:40px;max-height:40px;"/></td>
+						<td style="vertical-align:middle">Ruiqian Yu</td>
+                		<td style="vertical-align:middle">Northeastern University</td>
+                		<td style="vertical-align:middle">Front-end</td>
+						<td>	
+							<div class="footer-social-icons">
+								<ul class="social-icons">
+									<li><a href="" class="social-icon"> <i class="fa fa-linkedin"></i></a></li>
+									<li><a href="" class="social-icon"> <i class="fa fa-github"></i></a></li>
+								</ul>
+							</div>
+						</td>
+              		</tr>
+              		<tr>
+						<td><img src="https://cdn1.iconfinder.com/data/icons/mix-color-4/502/Untitled-1-512.png" style="margin:15px;float:left;width:40px;max-height:40px;"/></td>
+						<td style="vertical-align:middle">Yi Qi</td>
+                		<td style="vertical-align:middle">Bentley University</td>
+                		<td style="vertical-align:middle">Data Scientist</td>
+						<td>	
+							<div class="footer-social-icons">
+								<ul class="social-icons">
+									<li><a href="" class="social-icon"> <i class="fa fa-linkedin"></i></a></li>
+									<li><a href="" class="social-icon"> <i class="fa fa-github"></i></a></li>
+								</ul>
+							</div>
+						</td>
+              		</tr>
+            	</tbody>
+          	</table>
+			</div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
+
 
 {% endblock menu %}
 

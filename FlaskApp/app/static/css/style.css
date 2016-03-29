@@ -1,3 +1,6 @@
+@import url(http://fonts.googleapis.com/css?family=Lato);
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
 *{
 	margin:0;
 	padding:0;
@@ -173,4 +176,57 @@ body {
 .bottom-line{
 	display:inline-block;
 	margin-bottom:10px;
+}
+
+.footer-social-icons {
+	width: 80px;
+	display:block;
+  margin: 0 auto;
+}
+
+.social-icon {
+	color: #fff;
+}
+
+ul.social-icons {	
+	margin-top: 10px;
+
+}
+
+.social-icons li {
+	vertical-align: top;
+	display: inline;
+}
+
+.social-icons a {
+	color: #fff; 
+	text-decoration: none;
+}
+
+.fa-linkedin {
+	padding:10px 11px 8px 11px;
+	-o-transition:.5s;
+  	-ms-transition:.5s;
+  	-moz-transition:.5s;
+  	-webkit-transition:.5s;
+  	transition: .5s;
+  	background-color: #322f30;
+}
+
+.fa-linkedin:hover {
+	background-color: #0073a4;
+}
+
+.fa-github {
+	padding:10px 11px 8px 11px;
+	-o-transition:.5s;
+  	-ms-transition:.5s;
+  	-moz-transition:.5s;
+  	-webkit-transition:.5s;
+  	transition: .5s;
+  	background-color: #322f30;
+}
+
+.fa-github:hover {
+	background-color: #e25714;
 }

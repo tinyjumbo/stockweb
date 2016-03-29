@@ -20,7 +20,7 @@ class DBdriver():
         scores = collections.defaultdict(list)
         data_set = tweet_collection.find({"company": company}).sort([("date", pymongo.ASCENDING)])
         for d in data_set:
-            key = d["date"].strftime('%Y/%m/%d')
+            key = d["date"]
             if key in scores:
                 print "key exists"
             else:
@@ -43,14 +43,14 @@ class DBdriver():
             print end
             start = end - timedelta(days=1)
             print start
-            db_read = tweet_collection.find({'date': {'$gte': start, '$lt': end}}).sort([("company", pymongo.ASCENDING)])
-            num = tweet_collection.find({'date': {'$gte': start, '$lt': end}}).count()
+            db_read = tweet_collection.find({'date': {'$gte': str(start), '$lt': str(end)}}).sort([("company", pymongo.ASCENDING)])
+            num = tweet_collection.find({'date': {'$gte': str(start), '$lt': str(end)}}).count()
             print num
             if(num == 3):
                 for record in db_read:
                     
                     tcount_obejct = tcount(company=record["company"], count=record["count"], date=record["date"])
-                    key = record["date"].strftime('%Y/%m/%d')
+                    key = record["date"]
                     count_set[key].append(tcount_obejct.count)
             count = count+1
             

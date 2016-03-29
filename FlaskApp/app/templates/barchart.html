@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block extra_head %}
-<title>Realtime Stock chart</title>
+    <title>Realtime Stock chart</title>
 {% endblock extra_head %}
 {% block menu %}
 <div class="container">
@@ -12,7 +12,7 @@
                 <li role="presentation"><a href="#">Contact</a></li>
             </ul>
         </nav>
-        <h3 class="text-muted">Stock Prediction</h3>
+        <h3 class="text-muted">Stock Web</h3>
     </div>
 </div>
 {% endblock menu %}
@@ -36,13 +36,14 @@
         </tr>
         </thead>
         <tbody>
-
-        <tr>
-            <th>2016-2-19</th>
-            {% for item in info %}
-            <td>{{ item }}</td>
-            {% endfor %}
+        {% for k, v in info.items %}
+        <tr>			
+            <th>{{ k }}</th>
+            {% for j in v %}
+            <td>{{ j }}</td>
+            {% endfor %}			
         </tr>
+        {% endfor %}
 
         </tbody>
     </table>

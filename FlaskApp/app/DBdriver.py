@@ -37,9 +37,9 @@ class DBdriver():
        	db_read_num = tweet_collection.find().count()/3
         print db_read_num
         count = 0
-        while(count < db_read_num):
+        while(db_read_num > 0):
             
-            end = datetime.now().today() - timedelta(days=count)
+            end = datetime(2016, 3, 13, 0, 0) + timedelta(days=db_read_num)
             print end
             start = end - timedelta(days=1)
             print start
@@ -52,7 +52,7 @@ class DBdriver():
                     tcount_obejct = tcount(company=record["company"], count=record["count"], date=record["date"])
                     key = record["date"]
                     count_set[key].append(tcount_obejct.count)
-            count = count+1
+            db_read_num = db_read_num - 1
             
         # db_read = tweet_collection.find_one()
         print "succeed to read"
